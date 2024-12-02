@@ -1,0 +1,41 @@
+.userCard {
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.userCard:hover {
+  transform: scale(1.05);
+}
+
+.maleCard {
+  background-color: #cce7ff;
+  border: 2px solid #007bff;
+}
+
+.femaleCard {
+  background-color: #ffccf2;
+  border: 2px solid #ff69b4;
+}
+
+.userImg {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.userHeading {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.userEmail,
+.userLocation {
+  font-size: 14px;
+  color: #555;
+}
