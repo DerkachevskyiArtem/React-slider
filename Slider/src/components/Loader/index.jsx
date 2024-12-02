@@ -14,8 +14,9 @@ class Loader extends Component {
     isLoading: false,
     currentUser: 1,
     isAutoSliding: false,
-    slideDelay: 3000,
+    slideDelay: 3,
     intervalId: null,
+    // errorMessage: '',
   };
 
   componentDidMount = () => {
@@ -52,7 +53,7 @@ class Loader extends Component {
         this.setState((prevState) => ({
           currentUser: prevState.currentUser + 1,
         }));
-      }, this.state.slideDelay);
+      }, this.state.slideDelay * 1000);
 
       this.setState({
         isAutoSliding: true,
@@ -61,10 +62,41 @@ class Loader extends Component {
     }
   };
 
+  // updateSlideDelay = (newDelay) => {
+  //   if (newDelay === '') {
+  //     this.setState({
+  //       slideDelay: '',
+  //       errorMessage: '',
+  //     });
+  //   } else if (newDelay >= 1) {
+  //     this.setState({
+  //       slideDelay: newDelay,
+  //       errorMessage: '',
+  //     });
+  //   } else {
+  //     this.setState({
+  //       errorMessage: 'The delay should be at least 1 second',
+  //     });
+  //   }
+  // };
+
   updateSlideDelay = (newDelay) => {
     this.setState({
       slideDelay: newDelay,
     });
+  };
+
+  handleSlideDelayChange = (event) => {
+    const newDelay = event.target.value;
+
+    if (newDelay === '') {
+      this.updateSlideDelay(newDelay);
+      return;
+    }
+    const regex = /^(?!0(\.0+)?$)(\d+(\.\d{0,2})?)$/;
+    if (newDelay.match(regex)) {
+      this.updateSlideDelay(newDelay);
+    }
   };
 
   stopAutoSlideShow = () => {
@@ -101,8 +133,15 @@ class Loader extends Component {
   };
 
   render() {
-    const { users, isLoading, error, currentUser, isAutoSliding, slideDelay } =
-      this.state;
+    const {
+      users,
+      isLoading,
+      error,
+      currentUser,
+      isAutoSliding,
+      slideDelay,
+      errorMessage,
+    } = this.state;
 
     if (isLoading) {
       return <Loading />;
@@ -126,8 +165,9 @@ class Loader extends Component {
           slideDelay={slideDelay}
           onStart={this.startAutoSlideShow}
           onStop={this.stopAutoSlideShow}
-          onDelayChange={this.updateSlideDelay}
+          onDelayChange={this.handleSlideDelayChange}
         />
+        {errorMessage && <div className={s.errorMessage}>{errorMessage}</div>}
       </div>
     );
   }

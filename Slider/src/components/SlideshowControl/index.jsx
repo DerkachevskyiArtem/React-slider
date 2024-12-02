@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import s from './SlideshowControl.module.css';
 
 class SlideshowControl extends Component {
-  handleDelayChange = (e) => {
-    this.props.onDelayChange(e.target.value);
-  };
+
 
   render() {
-    const { isAutoSliding, slideDelay, onStart, onStop } = this.props;
+    const { isAutoSliding, slideDelay, onStart, onStop, onDelayChange} = this.props;
 
     return (
       <div className={s.container}>
@@ -23,12 +21,13 @@ class SlideshowControl extends Component {
           )}
         </div>
         <div>
-          <label className={s.label}>Slide Delay (ms):</label>
+          <label className={s.label}>Slide Delay (sec):</label>
           <input
             className={s.input}
-            type="number"
+            type="text"
+            // min="1"
             value={slideDelay}
-            onChange={this.handleDelayChange}
+            onChange={onDelayChange}
           />
         </div>
       </div>
