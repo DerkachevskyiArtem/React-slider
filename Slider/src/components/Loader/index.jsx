@@ -143,13 +143,13 @@ class Loader extends Component {
       errorMessage,
     } = this.state;
 
-    if (isLoading) {
-      return <Loading />;
-    }
+    // if (isLoading) {
+    //   return <Loading />;
+    // }
 
-    if (error) {
-      return <Error message={error.message} />;
-    }
+    // if (error) {
+    //   return <Error message={error.message} />;
+    // }
 
     return (
       <div className={s.loaderContainer}>
