@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import s from './SlideshowControl.module.css';
 
 class SlideshowControl extends Component {
-
-
   render() {
-    const { isAutoSliding, slideDelay, onStart, onStop, onDelayChange} = this.props;
+    const { isAutoSliding, slideDelay, onStart, onStop, onDelayChange } =
+      this.props;
 
     return (
       <div className={s.container}>
@@ -28,6 +27,7 @@ class SlideshowControl extends Component {
             // min="1"
             value={slideDelay}
             onChange={onDelayChange}
+            disabled={isAutoSliding}
           />
         </div>
       </div>

@@ -50,9 +50,9 @@ class Loader extends Component {
   startAutoSlideShow = () => {
     if (!this.state.isAutoSliding) {
       const intervalId = setInterval(() => {
-        this.setState((prevState) => ({
-          currentUser: prevState.currentUser + 1,
-        }));
+        this.setState({
+          currentUser: this.state.currentUser + 1,
+        });
       }, this.state.slideDelay * 1000);
 
       this.setState({
@@ -147,9 +147,9 @@ class Loader extends Component {
     //   return <Loading />;
     // }
 
-    // if (error) {
-    //   return <Error message={error.message} />;
-    // }
+    if (error) {
+      return <Error message={error.message} />;
+    }
 
     return (
       <div className={s.loaderContainer}>
