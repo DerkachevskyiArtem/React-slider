@@ -163,9 +163,9 @@ class Loader extends Component {
         <SlideshowControl
           isAutoSliding={isAutoSliding}
           slideDelay={slideDelay}
-          onStart={this.startAutoSlideShow}
-          onStop={this.stopAutoSlideShow}
-          onDelayChange={this.handleSlideDelayChange}
+          startAutoSlideShow={this.startAutoSlideShow}
+          stopAutoSlideShow={this.stopAutoSlideShow}
+          handleSlideDelayChange={this.handleSlideDelayChange}
         />
         {errorMessage && <div className={s.errorMessage}>{errorMessage}</div>}
       </div>

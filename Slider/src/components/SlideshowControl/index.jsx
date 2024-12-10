@@ -3,18 +3,18 @@ import s from './SlideshowControl.module.css';
 
 class SlideshowControl extends Component {
   render() {
-    const { isAutoSliding, slideDelay, onStart, onStop, onDelayChange } =
+    const { isAutoSliding, slideDelay, startAutoSlideShow, stopAutoSlideShow, handleSlideDelayChange } =
       this.props;
 
     return (
       <div className={s.container}>
         <div className={s.buttons}>
           {isAutoSliding ? (
-            <button className={s.button} type="button" onClick={onStop}>
+            <button className={s.button} type="button" onClick={stopAutoSlideShow}>
               Stop Slideshow
             </button>
           ) : (
-            <button className={s.button} type="button" onClick={onStart}>
+            <button className={s.button} type="button" onClick={startAutoSlideShow}>
               Start Slideshow
             </button>
           )}
@@ -26,7 +26,7 @@ class SlideshowControl extends Component {
             type="text"
             // min="1"
             value={slideDelay}
-            onChange={onDelayChange}
+            onChange={handleSlideDelayChange}
             disabled={isAutoSliding}
           />
         </div>
